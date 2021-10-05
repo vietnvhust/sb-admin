@@ -1,9 +1,9 @@
 import React from "react";
 import { IUser } from "../../../stores/auth";
-export type UserPopp = {
+export type UserProp = {
   user: IUser;
 };
-export const UserItem = ({ user }: UserPopp): JSX.Element => {
+export const UserItem = ({ user }: UserProp): JSX.Element => {
   const { first_name, last_name, email, avatar } = user;
   return (
     <tr>
@@ -11,7 +11,7 @@ export const UserItem = ({ user }: UserPopp): JSX.Element => {
       <td>{last_name}</td>
       <td>{email}</td>
       <td>
-        <img style={{ width: "50px" }} src={avatar} />
+        <img style={{ width: "50px" }} src={avatar} alt={first_name} />
       </td>
       <td>
         <div className="d-flex justify-content-center">

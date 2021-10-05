@@ -6,7 +6,7 @@ import { UserList } from './UserList';
 export const User = () => {
     const dispatch = useDispatch();
     useEffect(()=> {
-        dispatch(getAll())
+        dispatch(getAll(1))
     }, [])
     return (
         <UserList />

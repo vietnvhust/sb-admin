@@ -1,7 +1,10 @@
+import { IPagination } from "../../helpers";
 import { IUser } from "../auth";
 
 export interface IUserState {
-  users: IUser[] | null,
+  users: IUser[],
+  total: number,
+  page: number,
   loading: boolean
 }
 
@@ -17,7 +20,7 @@ export type IUserRequest = {
 
 export interface IUserSuccess {
   type: typeof EUserActionType.LOAD_USER_SUCCESS
-  payload: IUser[]
+  payload: IPagination<IUser>
 }
 
 export interface IUserFailed {
