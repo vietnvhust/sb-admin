@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { IUser } from "../../../stores/auth";
+import { AppState } from "../../../stores/stores";
+import { IUserState } from "../../../stores/user";
 import { UserItem } from "./UserItem";
 
 export function UserList() {
+  const userState: IUserState = useSelector((state: AppState) => state.user);
   return (
     <>
       <h1 className="h3 mb-2 text-gray-800">Tables</h1>
@@ -21,26 +26,32 @@ export function UserList() {
             <table className="table table-bordered" id="dataTable" width="100%">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>Email</th>
+                  <th>Avatar</th>
+                  <th className="text-center" style={{"width": "200px"}}>Action</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>Email</th>
+                  <th>Avatar</th>
+                  <th className="text-center" style={{"width": "200px"}}>Action</th>
                 </tr>
               </tfoot>
               <tbody>
-                <UserItem />
+                {
+                  !!userState?.users && (
+                    userState.users.map((user: IUser) => {
+                      return (
+                        <UserItem key={user._id} user={user} />
+                      )
+                    })
+                  )
+                }
               </tbody>
             </table>
           </div>

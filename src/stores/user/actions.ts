@@ -11,7 +11,10 @@ export const getAll =
         type: EUserActionType.LOAD_USER_REQUEST,
       });
       const response: IUser[] = await userApi.getAll()
-      console.log('response :>> ', response);
+      dispatch({
+        type: EUserActionType.LOAD_USER_SUCCESS,
+        payload: response
+      });
     } catch (error) {
       dispatch({
         type: EUserActionType.LOAD_USER_FAILED,

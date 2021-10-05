@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../../../stores/auth";
+import { IAuthState, logout } from "../../../stores/auth";
 import { AppState } from "../../../stores/stores";
 function Topbar() {
   const dispatch = useDispatch();
   const [subAccountToggle, setSubAccountToggle] = useState(false);
   const [dropdownNotificationToggle, setDropdownNotification] = useState(false);
   const [dropdownEmailToggle, setDropdownEmail] = useState(false);
-  const authState = useSelector((state: AppState)=>state.auth)
-  const {user} = authState
-  const {first_name, avatar} = user
+  const authState: IAuthState = useSelector((state: AppState)=>state.auth)
   const handleSubAccountToggle = () => {
     setSubAccountToggle(!subAccountToggle);
     setDropdownNotification(false);
@@ -276,12 +274,12 @@ function Topbar() {
             onClick={handleSubAccountToggle}
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-              {!!first_name && ( first_name )}
+              {authState?.user?.first_name && authState?.user?.first_name}
             </span>
             <img
               className="img-profile rounded-circle"
               alt=""
-              src={avatar}
+              src={authState?.user?.avatar && authState?.user?.avatar}
             />
           </button>
           <div
