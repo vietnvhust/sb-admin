@@ -2,16 +2,17 @@ import { IUser } from './../stores/auth';
 import { AxiosResponse } from "axios";
 import { axiosClient } from "./axiosClient";
 import { IPagination } from '../helpers';
+import { IAddUserRequest } from '../stores/user';
 
-const getAll = async (): Promise<IUser[]> => {
-  const response: AxiosResponse<IUser[]> = await axiosClient.get("/api/v1/users");
+const getUserPaination = async (currentPage: number, keyword: string): Promise<IPagination<IUser>> => {
+  const response: AxiosResponse<IPagination<IUser>> = await axiosClient.get(`/api/v1/users/paging/${currentPage}/?keyword=${keyword}`);
   return response.data
-};
-const getUserPaination = async (currentPage: number): Promise<IPagination<IUser>> => {
-  const response: AxiosResponse<IPagination<IUser>> = await axiosClient.get(`/api/v1/users/paging/${currentPage}`);
+}
+const addNewUser = async (user: IAddUserRequest): Promise<any> => {
+  const response: AxiosResponse<any> = await axiosClient.post('/api/v1/users', user);
   return response.data
 }
 export const userApi = {
-  getAll,
-  getUserPaination
+  getUserPaination,
+  addNewUser
 };

@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import Dashboard from "./Dashboard";
 import { User } from "./User";
+import UserAdd from "./User/UserAdd";
 
 function Admin() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function Admin() {
               </Route>
               <Route exact path="/users">
                 <User />
+              </Route>
+              <Route exact path="/users/add">
+                <UserAdd />
               </Route>
             </Switch>
           </div>

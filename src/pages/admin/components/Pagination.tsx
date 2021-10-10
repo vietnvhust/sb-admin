@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAll } from "../../../stores/user";
+import { getUserPaination } from "../../../stores/user";
 type PaginationProp = {
   pageMax: number;
+  keyword: string
 };
-export function Pagination({ pageMax }: PaginationProp) {
+export function Pagination({ pageMax, keyword }: PaginationProp) {
   const [active, setActive] = useState(1)
   const dispatch = useDispatch()
   const handlePagination = (page: number) => {
-    dispatch(getAll(page))
+    dispatch(getUserPaination(page, keyword))
     setActive(page)
   }
   let PaginationItem = [];

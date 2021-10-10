@@ -31,78 +31,7 @@ function Sidebar() {
         </Link>
       </li>
       <hr className="sidebar-divider" />
-
-      <div className="sidebar-heading">Interface</div>
-
       <li className="nav-item">
-        <Link to=""
-          className="nav-link collapsed"
-          data-toggle="collapse"
-          data-target="#collapseTwo"
-          aria-expanded="true"
-          aria-controls="collapseTwo"
-        >
-          <i className="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </Link>
-        <div
-          id="collapseTwo"
-          className="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div className="bg-white py-2 collapse-inner rounded">
-            <h6 className="collapse-header">Custom Components:</h6>
-            <Link to="" className="collapse-item">
-              Buttons
-            </Link>
-            <Link to="" className="collapse-item">
-              Cards
-            </Link>
-          </div>
-        </div>
-      </li>
-
-      <li className="nav-item">
-        <Link to=""
-          className="nav-link collapsed"
-          data-toggle="collapse"
-          data-target="#collapseUtilities"
-          aria-expanded="true"
-          aria-controls="collapseUtilities"
-        >
-          <i className="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </Link>
-        <div
-          id="collapseUtilities"
-          className="collapse"
-          aria-labelledby="headingUtilities"
-          data-parent="#accordionSidebar"
-        >
-          <div className="bg-white py-2 collapse-inner rounded">
-            <h6 className="collapse-header">Custom Utilities:</h6>
-            <Link to="" className="collapse-item">
-              Colors
-            </Link>
-            <Link to="" className="collapse-item">
-              Borders
-            </Link>
-            <Link to="" className="collapse-item">
-              Animations
-            </Link>
-            <Link to="" className="collapse-item">
-              Other
-            </Link>
-          </div>
-        </div>
-      </li>
-
-      <hr className="sidebar-divider" />
-
-      <div className="sidebar-heading">Addons</div>
-
-      <li className="nav-item active">
         <Link to="/users"
           className="nav-link"
           data-toggle="collapse"
@@ -110,36 +39,8 @@ function Sidebar() {
           aria-expanded="true"
           aria-controls="collapsePages"
         >
-          <i className="fas fa-fw fa-folder"></i>
           <span>Users</span>
         </Link>
-        <div
-          id="collapsePages"
-          className="collapse show"
-          aria-labelledby="headingPages"
-          data-parent="#accordionSidebar"
-        >
-          <div className="bg-white py-2 collapse-inner rounded">
-            <h6 className="collapse-header">Login Screens:</h6>
-            <Link to="" className="collapse-item">
-              Login
-            </Link>
-            <Link to="" className="collapse-item">
-              Register
-            </Link>
-            <Link to="" className="collapse-item">
-              Forgot Password
-            </Link>
-            <div className="collapse-divider"></div>
-            <h6 className="collapse-header">Other Pages:</h6>
-            <Link to="" className="collapse-item">
-              404 Page
-            </Link>
-            <Link to="" className="collapse-item active">
-              Blank Page
-            </Link>
-          </div>
-        </div>
       </li>
 
       <li className="nav-item">
