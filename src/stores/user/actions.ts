@@ -1,3 +1,5 @@
+import { alertError, clearAlert, alertSuccess } from './../alert/actions';
+import { IAlertActionType } from './../alert/types';
 import { Dispatch } from "redux";
 import { userApi } from "../../api";
 import { IPagination } from "../../helpers";
@@ -25,22 +27,21 @@ export const getUserPaination =
 
   export const addUser =
   (user: IAddUserRequest) =>
-  async (dispatch: Dispatch<IUserActionType>) => {
+  async (dispatch: Dispatch<IUserActionType | IAlertActionType>) => {
     try {
       dispatch({
         type: EUserActionType.ADD_USER_REQUEST,
       });
-      const response = await userApi.addNewUser(user)
-      console.log('response :>> ', response);
+      await userApi.addNewUser(user)
       dispatch({
         type: EUserActionType.ADD_USER_SUCCESS,
-        payload: response
       });
+      dispatch(alertSuccess("Thêm user thành công"))
     } catch (error) {
-      console.log('ADD_USER_FAILED :>> ', error);
       dispatch({
         type: EUserActionType.ADD_USER_FAILED,
       });
+      dispatch(alertError("Thêm user thất bại"))
     }
   };
 

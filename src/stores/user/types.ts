@@ -44,7 +44,6 @@ export type IUserAddRequest = {
 
 export interface IUserAddSuccess {
   type: typeof EUserActionType.ADD_USER_SUCCESS;
-  payload: any
 }
 
 export interface IUserAddFailed {

@@ -1,3 +1,4 @@
+import { alertReducer } from './alert/reducers';
 import { userReducer } from './user/reducers';
 import { authReducer } from "./auth/reducers";
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
@@ -7,7 +8,8 @@ import storage from "redux-persist/lib/storage";
 
 export const rootReducer = combineReducers({
   auth: authReducer,
-  user: userReducer
+  user: userReducer,
+  alert: alertReducer
 });
 
 const persistConfig = {

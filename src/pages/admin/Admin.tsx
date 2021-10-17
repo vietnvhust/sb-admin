@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router";
+import { IAlertState } from "../../stores/alert";
 import { getCurrentLoginUser } from "../../stores/auth";
+import { AppState } from "../../stores/stores";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
@@ -14,6 +16,8 @@ function Admin() {
   useEffect(() => {
     dispatch(getCurrentLoginUser());
   }, []);
+  const alertState: IAlertState = useSelector((state: AppState) => state.alert);
+  const { type, message } = alertState;
   return (
     <div id="wrapper">
       <Sidebar />
@@ -21,6 +25,11 @@ function Admin() {
         <div id="content">
           <Topbar />
           <div className="container-fluid">
+            {type && message && (
+              <div className={`alert ${type}`} role="alert">
+                {message}
+              </div>
+            )}
             <Switch>
               <Route exact path="/dashboard">
                 <Dashboard />

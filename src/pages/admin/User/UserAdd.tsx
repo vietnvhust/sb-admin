@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { UrlConstants } from "../../../constants";
+import { validateEmail } from "../../../helpers";
 import { addUser, IAddUserRequest } from "../../../stores/user";
 
 function UserAdd() {
@@ -16,6 +17,7 @@ function UserAdd() {
   const dispatch = useDispatch()
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormSubmitted(true)
     const {email, password, first_name, last_name} = inputs
     if( email && password && first_name && last_name ) {
         const user: IAddUserRequest = {
@@ -30,9 +32,6 @@ function UserAdd() {
     setInputs({ ...inputs, [name]: value });
   };
   const { email, password, first_name, last_name } = inputs;
-  const validateEmail = (email: string): boolean => {
-    return false;
-  };
   return (
     <>
       <h1 className="h3 mb-4 text-gray-800">Thêm mới user</h1>
